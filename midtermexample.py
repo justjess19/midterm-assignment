@@ -86,7 +86,7 @@ def result():
         return render_template("puppypictures.html", result= favoritepuppy)
     flash('All fields are required!')
     return redirect(url_for('index'))
-
+#done
 
 if __name__ == '__main__':
     app.run()
