@@ -9,12 +9,15 @@ import json
 
 app = Flask(__name__)
 app.debug = True
-
+app.config['SECRET_KEY'] = 'hard to guess string'
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html')
 
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template('500.html')
     
 @app.route('/')
 def first():
@@ -62,6 +65,27 @@ def res2():
         response.set_cookie('name',value=nfirst)
         return response
         #return "<b>" + first + "</b> <i>" + str("was born in ") + newage + str("!") + "</i>" 
+
+
+class PuppyForm(FlaskForm):
+    puppy = StringField('Enter your favorite type of puppy to get fun pictures of other dogs.', validators=[Required()])
+    submit = SubmitField('Submit')
+
+
+@app.route('/puppy')
+def index():
+    simpleForm = PuppyForm()
+    return render_template('wtf.html', form=simpleForm)
+
+@app.route('/puppyresult', methods = ['GET', 'POST'])
+def result():
+    form = PuppyForm(request.form)
+    if request.method == 'POST' and form.validate_on_submit():
+        puppy = form.puppy.data
+        favoritepuppy =  "Your favorite puppy is a {0}! ".format(puppy)
+        return render_template("puppypictures.html", result= favoritepuppy)
+    flash('All fields are required!')
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
