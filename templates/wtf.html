@@ -1,11 +1,45 @@
+<style>
+
+body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #663399;
+  color: #fff;
+}
+h2 {
+  text-align: center;
+  font-size: 48px;
+  color: #fff;
+}
+
+.form-box {
+  width: 250px;
+  height: 300px;
+  background-color: #fff;
+  position: absolute;
+  color: #4d4d4d;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; 
+  margin: auto;
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.1), 0 3px 5px rgba(0,0,0,0.15)
+}
+
+</style>
+
 {% block content %}
-  <h1>Simple WTF-Form</h1>
-  <form method="POST" action="http://localhost:5000/puppyresult">
-      {{ form.hidden_tag() }}
-      {% for message in get_flashed_messages() %}
-      {{ message }}
-      {% endfor %}
-      <p>{{ form.puppy.label }}{{ form.puppy() }}</p>
-      {{ form.submit() }}
-  </form>
+  <div class="form-box">
+    <form method="POST" action="http://localhost:5000/puppyresult">
+        {{ form.hidden_tag() }}
+        {% for message in get_flashed_messages() %}
+        {{ message }}
+        {% endfor %}
+        <p>{{ form.puppy.label }}{{ form.puppy() }}</p>
+        {{ form.submit() }}
+    </form>
+  </div>
 {% endblock %}

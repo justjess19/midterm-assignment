@@ -54,10 +54,13 @@ def res2():
         nfirst = newresult.get('firstname')
         first= str(nfirst) + "is "
         newnumm = newresult.get('number')
+        year= 2017 - int(newnumm)
+        newyear = str(year)
         data = { 
             "title" : "This is our result page",
             "name": nfirst, 
             "age":newnumm,
+            "year" :newyear,
             "cookie":cookies
 
         }
@@ -73,7 +76,7 @@ class PuppyForm(FlaskForm):
 
 
 @app.route('/puppy')
-def index():
+def pup():
     simpleForm = PuppyForm()
     return render_template('wtf.html', form=simpleForm)
 
@@ -84,8 +87,8 @@ def result():
         puppy = form.puppy.data
         favoritepuppy =  "Your favorite puppy is a {0}! ".format(puppy)
         return render_template("puppypictures.html", result= favoritepuppy)
-    flash('All fields are required!')
-    return redirect(url_for('index'))
+    flash('Please enter data before submitting!!!')
+    return redirect(url_for('pup'))
 #done
 
 if __name__ == '__main__':

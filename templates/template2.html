@@ -1,16 +1,56 @@
 
 <html>
+<head>
+	<title>Form</title>
+
+</head>
+<style>
+
+body {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: #663399;
+	color: #fff;
+}
+h2 {
+	text-align: center;
+	font-size: 48px;
+	color: #fff;
+}
+
+.form-box {
+	width: 250px;
+	height: 300px;
+	background-color: #fff;
+	position: absolute;
+	color: #4d4d4d;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;	
+	margin: auto;
+	padding: 15px;
+	border-radius: 3px;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.1), 0 3px 5px rgba(0,0,0,0.15)
+}
+
+</style>
+
 <body>
 <h2>Enter your name and age!!!</h2>
-<form action="http://localhost:5000/newresult" method="GET">
-  Name:<br>
-  <input type="text" name="firstname" value="">
-  <br>
-  Enter your age:<br>
-  <input type="number" name="number" value="">
-  <br><br>
-  <input type="submit" value="Submit">
-</form> 
+<div class="form-box">
+	<form action="http://localhost:5000/newresult" method="GET">
+	  Name:<br>
+	  <input type="text" name="firstname" value="">
+	  <br>
+	  Enter your age:<br>
+	  <input type="number" name="number" value="">
+	  <br><br>
+	  <input type="submit" value="Submit">
+	</form> 
+	<a href={{ url_for('pup') }}>Link to puppies</a> 
+</div>
 
 </body>
 </html>

@@ -1,3 +1,23 @@
+
+<style>
+
+body {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: #663399;
+	color: #fff;
+}
+h2 {
+	text-align: center;
+	font-size: 48px;
+	color: #fff;
+}
+
+
+
+</style>
+
 {% if result.cookie=="TRUE"%}
 	
 	{% for r in result.name %}
@@ -9,6 +29,12 @@
 	{% for r in result.age %}
 	<b>{{r}}</b> </br>
 	{% endfor %}
+	<p>and was born in {{ result.year }}</p>
+	<a href={{ url_for('enter_data') }}>Link to the first form</a> 
+	</br>
+	<a href={{ url_for('pup') }}>Link to the puppy page</a> 
+
+
 
 {% else %}
 	<p>Opps you skipped a few steps please go back to the first page</p>
